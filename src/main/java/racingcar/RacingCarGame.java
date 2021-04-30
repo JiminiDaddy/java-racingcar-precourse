@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Scanner;
+
 /**
  * Created by Choen-hee Park
  * User : chpark
@@ -19,7 +21,9 @@ public class RacingCarGame {
 	}
 
 	public static String selectRacingCarNames() {
-		return "";
+		System.out.println("경주할 자동차 입력을 입력하세요.(이름은 쉽표(,) 기준으로 구분");
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextLine();
 	}
 
 
