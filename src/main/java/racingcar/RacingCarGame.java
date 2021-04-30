@@ -8,7 +8,32 @@ package racingcar;
  */
 
 public class RacingCarGame {
-	public boolean validCarNameLength(String name) {
-		return !name.isEmpty() && name.length() <= 5;
+
+	public static void main(String[] args) {
+		try {
+			String[] carNames = getValidCarNames(selectRacingCarNames());
+
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public static String selectRacingCarNames() {
+		return "";
+	}
+
+
+	public static String[] getValidCarNames(String names) {
+		String[] carNames = names.split(",");
+		for (String carName : carNames) {
+			validCarNameLengthBetween1And5(carName);
+		}
+		return carNames;
+	}
+
+	private static void validCarNameLengthBetween1And5(String name) {
+		if (name.isEmpty() || name.length() > 5) {
+			throw new IllegalArgumentException("자동차이름의 길이를 1~5자사이로 입력해주세요.");
+		}
 	}
 }
