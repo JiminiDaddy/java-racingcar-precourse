@@ -15,7 +15,7 @@ class CarTest {
 	@Test
 	@DisplayName("입력값이 4이상이면 자동차가 전진한다")
 	void goCar() {
-		Car car = new Car();
+		Car car = new Car("mycar");
 		car.run(9);
 		Assertions.assertThat(car.getPosition()).isEqualTo(1);
 		car.run(3);

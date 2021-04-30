@@ -10,8 +10,15 @@ package racingcar;
 public class Car {
 	private int position;
 
-	public Car() {
+	private String name;
+
+	public Car(String name) {
 		this.position = 0;
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public int getPosition() {
