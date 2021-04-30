@@ -20,4 +20,10 @@ public class Cars {
 	public void addCar(Car car) {
 		cars.add(car);
 	}
+
+	public void run() {
+		for (Car car : cars) {
+			car.run(ValidNumberUtils.selectNumber());
+		}
+	}
 }
