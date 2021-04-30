@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -14,6 +15,8 @@ public class RacingCarGame {
 	public static void main(String[] args) {
 		try {
 			String[] carNames = getValidCarNames(selectRacingCarNames());
+			int tryRunCount = selectTryRunCount();
+			System.out.println("cars:" + Arrays.toString(carNames) + " , count:" + tryRunCount);
 
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -24,6 +27,12 @@ public class RacingCarGame {
 		System.out.println("경주할 자동차 입력을 입력하세요.(이름은 쉽표(,) 기준으로 구분");
 		Scanner scanner = new Scanner(System.in);
 		return scanner.nextLine();
+	}
+
+	public static int selectTryRunCount() {
+		System.out.println("시도할 회수는 몇번인가요?");
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextInt();
 	}
 
 
