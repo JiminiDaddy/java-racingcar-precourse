@@ -16,6 +16,9 @@ import java.util.*;
 public class RacingCarGame {
 	private static final int MAX_LENGTH_CAR_NAME = 5;
 	private static final String SEPARATOR_CAR_NAME = ",";
+	private static final String SEPARATOR_CAR_NAME_AND_DISTANCE = " : ";
+	private static final String DISPLAY_CAR_MOVE_DISTANCE = "-";
+	private static final String MESSAGE_RUN_RESULT = "실행 결과";
 
 	private List<Car> winners;
 
@@ -45,7 +48,7 @@ public class RacingCarGame {
 		for (String carName : carNames) {
 			cars.addCar(new Car(carName));
 		}
-		RacingCarGameUI.printMessage("\n실행 결과");
+		RacingCarGameUI.printMessage("\n" + MESSAGE_RUN_RESULT);
 		for (int i = 0; i < tryRunCount; ++i) {
 			cars.run();
 			printRunResult(cars);
@@ -55,9 +58,19 @@ public class RacingCarGame {
 
 	private void printRunResult(Cars cars) {
 		for (Car car : cars.getCars()) {
-			RacingCarGameUI.printRunDistance(car.getName(), car.getPosition());
+			StringBuilder sb = new StringBuilder();
+			sb.append(car.getName()).append(SEPARATOR_CAR_NAME_AND_DISTANCE).append(createCarMoveDistance(car.getPosition()));
+			RacingCarGameUI.printMessage(sb.toString());
 		}
 		RacingCarGameUI.printMessage("");
+	}
+
+	private String createCarMoveDistance(int distance) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < distance; ++i) {
+			sb.append(DISPLAY_CAR_MOVE_DISTANCE);
+		}
+		return sb.toString();
 	}
 
 	public void printGameResult() {
