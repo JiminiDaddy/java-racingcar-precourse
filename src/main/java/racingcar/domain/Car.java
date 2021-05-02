@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 /**
  * Created by Choen-hee Park

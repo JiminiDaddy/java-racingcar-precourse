@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.util.ValidNumberUtils;
 
 import java.util.ArrayList;
 import java.util.List;
