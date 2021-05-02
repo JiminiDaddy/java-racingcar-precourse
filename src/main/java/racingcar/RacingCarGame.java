@@ -17,18 +17,30 @@ public class RacingCarGame {
 	private static final int MAX_LENGTH_CAR_NAME = 5;
 	private static final String SEPARATOR_CAR_NAME = ",";
 
+	private List<Car> winners;
+
 	public static void main(String[] args) {
 		try {
-			String[] carNames = getValidCarNames(RacingCarGameUI.selectRacingCarNames());
-			int tryRunCount = RacingCarGameUI.selectTryRunCount();
-			start(carNames, tryRunCount);
+			RacingCarGame racingCarGame = new RacingCarGame();
+			String[] carNames = racingCarGame.getCarNames();
+			int tryRunCount = racingCarGame.getTryRunCount();
+			racingCarGame.start(carNames, tryRunCount);
+			racingCarGame.printGameResult();
 
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	public static void start(String[] carNames, int tryRunCount) {
+	public String[] getCarNames() {
+		return getValidCarNames(RacingCarGameUI.selectRacingCarNames());
+	}
+
+	public int getTryRunCount() {
+		return RacingCarGameUI.selectTryRunCount();
+	}
+
+	public void start(String[] carNames, int tryRunCount) {
 		Cars cars = new Cars();
 		for (String carName : carNames) {
 			cars.addCar(new Car(carName));
@@ -36,7 +48,10 @@ public class RacingCarGame {
 		for (int i = 0; i < tryRunCount; ++i) {
 			cars.run();
 		}
-		List<Car> winners = getWinners(cars.getCars());
+		winners = getWinners(cars.getCars());
+	}
+
+	public void printGameResult() {
 		RacingCarGameUI.printGameResult(winners);
 	}
 
