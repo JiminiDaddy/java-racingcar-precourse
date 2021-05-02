@@ -52,7 +52,13 @@ public class RacingCarGame {
 	}
 
 	public void printGameResult() {
-		RacingCarGameUI.printGameResult(winners);
+		StringBuilder sb = new StringBuilder();
+		for (Car car : winners) {
+			sb.append(car.getName()).append(SEPARATOR_CAR_NAME);
+		}
+		sb.delete(sb.length() - 1, sb.length());
+		sb.append("가 최종 우승했습니다.");
+		RacingCarGameUI.printMessage(sb.toString());
 	}
 
 	static String[] getValidCarNames(String names) {

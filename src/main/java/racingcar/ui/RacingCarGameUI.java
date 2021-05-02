@@ -1,8 +1,5 @@
 package racingcar.ui;
 
-import racingcar.domain.Car;
-
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -25,13 +22,7 @@ public class RacingCarGameUI {
 		return scanner.nextInt();
 	}
 
-	public static void printGameResult(List<Car> winners) {
-		StringBuilder sb = new StringBuilder();
-		for (Car car : winners) {
-			sb.append(car.getName()).append(",");
-		}
-		sb.delete(sb.length() - 1, sb.length());
-		sb.append("가 최종 우승했습니다.");
-		System.out.println(sb.toString());
+	public static void printMessage(String message) {
+		System.out.println(message);
 	}
 }
