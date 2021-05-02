@@ -45,6 +45,7 @@ public class RacingCarGame {
 		for (String carName : carNames) {
 			cars.addCar(new Car(carName));
 		}
+		RacingCarGameUI.printMessage("\n실행 결과");
 		for (int i = 0; i < tryRunCount; ++i) {
 			cars.run();
 			printRunResult(cars);
@@ -53,11 +54,10 @@ public class RacingCarGame {
 	}
 
 	private void printRunResult(Cars cars) {
-		RacingCarGameUI.printMessage("실행 결과");
 		for (Car car : cars.getCars()) {
 			RacingCarGameUI.printRunDistance(car.getName(), car.getPosition());
 		}
-		RacingCarGameUI.printMessage("\n");
+		RacingCarGameUI.printMessage("");
 	}
 
 	public void printGameResult() {
