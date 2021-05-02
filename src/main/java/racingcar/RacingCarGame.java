@@ -21,7 +21,6 @@ public class RacingCarGame {
 		try {
 			String[] carNames = getValidCarNames(RacingCarGameUI.selectRacingCarNames());
 			int tryRunCount = RacingCarGameUI.selectTryRunCount();
-			System.out.println("cars:" + Arrays.toString(carNames) + " , count:" + tryRunCount);
 			start(carNames, tryRunCount);
 
 		} catch (IllegalArgumentException e) {
@@ -67,6 +66,4 @@ public class RacingCarGame {
 		}
 		return winners;
 	}
-
-
 }

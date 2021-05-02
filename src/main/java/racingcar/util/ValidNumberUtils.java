@@ -10,9 +10,11 @@ import java.util.Random;
  */
 
 public class ValidNumberUtils {
+	private static final int UPPER_BOUND = 10;
+
 	public static int selectNumber() {
 		Random random = new Random();
 		random.setSeed(System.nanoTime());
-		return random.nextInt(10);
+		return random.nextInt(UPPER_BOUND);
 	}
 }

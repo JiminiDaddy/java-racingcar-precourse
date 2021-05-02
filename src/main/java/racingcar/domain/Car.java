@@ -8,26 +8,28 @@ package racingcar.domain;
  */
 
 public class Car {
-	private int position;
+	private static final int MIN_VALUE_RUNNABLE = 4;
 
-	private String name;
+	private RunDistance runDistance;
+
+	private Name name;
 
 	public Car(String name) {
-		this.position = 0;
-		this.name = name;
+		this.runDistance = new RunDistance();
+		this.name = new Name(name);
 	}
 
 	public String getName() {
-		return name;
+		return name.getValue();
 	}
 
 	public int getPosition() {
-		return position;
+		return runDistance.getValue();
 	}
 
 	public void run(int number) {
-		if (number >= 4) {
-			++position;
+		if (number >= MIN_VALUE_RUNNABLE) {
+			runDistance.add();
 		}
 	}
 }
