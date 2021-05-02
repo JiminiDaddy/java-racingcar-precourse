@@ -25,4 +25,13 @@ public class RacingCarGameUI {
 	public static void printMessage(String message) {
 		System.out.println(message);
 	}
+
+	public static void printRunDistance(String name, int distance) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(name).append(" : ");
+		for (int i = 0; i < distance; ++i) {
+			sb.append("-");
+		}
+		printMessage(sb.toString());
+	}
 }
