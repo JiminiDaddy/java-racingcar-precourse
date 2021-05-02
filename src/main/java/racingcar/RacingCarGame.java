@@ -16,10 +16,23 @@ public class RacingCarGame {
 			String[] carNames = getValidCarNames(selectRacingCarNames());
 			int tryRunCount = selectTryRunCount();
 			System.out.println("cars:" + Arrays.toString(carNames) + " , count:" + tryRunCount);
+			start(carNames, tryRunCount);
 
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+	public static void start(String[] carNames, int tryRunCount) {
+		Cars cars = new Cars();
+		for (String carName : carNames) {
+			cars.addCar(new Car(carName));
+		}
+		for (int i = 0; i < tryRunCount; ++i) {
+			cars.run();
+		}
+		List<Car> winners = getWinners(cars.getCars());
+		printGameResult(winners);
 	}
 
 	public static String selectRacingCarNames() {
@@ -60,5 +73,15 @@ public class RacingCarGame {
 			++i;
 		}
 		return winners;
+	}
+
+	public static void printGameResult(List<Car> winners) {
+		StringBuilder sb = new StringBuilder();
+		for (Car car : winners) {
+			sb.append(car.getName()).append(",");
+		}
+		sb.delete(sb.length() - 1, sb.length());
+		sb.append("가 최종 우승했습니다.");
+		System.out.println(sb.toString());
 	}
 }
