@@ -1,7 +1,6 @@
 package racingcar;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Choen-hee Park
@@ -48,5 +47,18 @@ public class RacingCarGame {
 		if (name.isEmpty() || name.length() > 5) {
 			throw new IllegalArgumentException("자동차이름의 길이를 1~5자사이로 입력해주세요.");
 		}
+	}
+
+	public static List<Car> getWinners(List<Car> racingCars) {
+		List<Car> winners = new ArrayList<>();
+		Collections.sort(racingCars, Comparator.comparing(car -> car.getPosition() * -1));
+		Car bestRacingCar = racingCars.get(0);
+		winners.add(bestRacingCar);
+		int i = 1;
+		while (i < racingCars.size() && bestRacingCar.getPosition() == racingCars.get(i).getPosition()) {
+			winners.add(racingCars.get(i));
+			++i;
+		}
+		return winners;
 	}
 }
